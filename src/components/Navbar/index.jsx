@@ -3,8 +3,9 @@ import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
+import { actLoginRequest, actGetUser, actLogout } from '../../actions/Auth';
 import { Button } from 'antd';
+import './style.css';
 
 class Navbar extends React.Component {
   render() {
@@ -34,7 +35,7 @@ class Navbar extends React.Component {
       );
     }
     return (
-      <Menu mode="horizontal" theme="dark">
+      <Menu mode="horizontal" className="navbar">
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>

@@ -10,7 +10,7 @@ import RegisterLearnerPage from './RegisterLearnerPage';
 import RegisterTeacherPage from './RegisterTeacherPage';
 import LearnerPage from './LearnerPage';
 import TeacherPage from './TeacherPage/index';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/index';
 import TeacherDetail from './TeacherDetail/index';
 
 const Root = () => (

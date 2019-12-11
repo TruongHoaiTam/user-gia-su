@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import RegisterForm from '../components/RegisterForm';
 
 class RegisterTeacherPage extends React.Component {
@@ -10,7 +9,6 @@ class RegisterTeacherPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
         <p className="title">REGISTER FOR TEACHER</p>
         <RegisterForm history={this.history} />
       </div>
