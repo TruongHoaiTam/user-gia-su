@@ -103,3 +103,15 @@ body {
   background: #db3236;
   opacity: 0.6;
 }
+
+/* Customize */
+/* Button */
+.ant-btn-primary {
+  background-color: #50A4A4 !important;
+  border-color: #50A4A4 !important;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  color: #fff;
+  background-color: #4EC6BF !important;
+  border-color: #4EC6BF !important;
+}

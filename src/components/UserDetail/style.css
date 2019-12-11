@@ -1,57 +1,33 @@
-.userDetail {
-  max-width: 945px;
-}
-.info-avatar {
-  display: relative;
-}
-.info-avatar::after {
-  clear: both;
-  content: "";
-  display: table;
-}
-.avatar-container {
-  float: left;
-  width: 150px;
-  height: 90px;
-  text-align: center;
-}
-.avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-}
-.short-info {
-  float: left;
-  min-width: 450px;
-  height: 90px;
-  margin-bottom: 14px;
-}
- .short-info p {
-   margin-bottom: 7px;
- }
-.flex {
- display: flex;
- width: 100%;
- margin-top: -6px;
-}
-.flex p {
-  margin-top: 8px;
-  flex: 1;
-}
-.content {
-  margin-left: 150px;
-}
-
-@media only screen and (max-width: 600px) {
-  .content {
-    margin-left: 0px;
+/* Root container */
+.userDetail .short-info p {
+        margin-bottom: 7px;
+        font-size: 21px;
+      }
+.userDetail .short-info span {
+    font-size: 13px;
+    font-weight: bolder;
   }
-}
+  .highlight {
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .rating {
+    color: #4EC8C0;
+  }
 
-/* Content */
-.tags {
-  margin-bottom: 16px;
+.card-group {
+  margin-top: 24px;
 }
-.des {
-  margin-bottom: 16px;
+  .card-group .ant-card-head {
+    background: #F9F9F9;
+  }
+  .card-group .ant-card-head-title {
+    font-size: 21px;
+    color: #595959;
+  }
+
+
+/* System margin */
+.mr-16 {
+  margin-right: 16px;
 }
