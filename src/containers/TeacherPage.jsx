@@ -1,32 +1,34 @@
 import React from 'react';
-<<<<<<< HEAD
+import IntroduceForm from '../components/IntroduceForm';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
+import 'antd/dist/antd.css';
 
-class LearnerPage extends React.Component {
+class TeacherPage extends React.Component {
+  handleMenuClick = e => {
+    console.log('click', e);
+  };
+
+  history = () => {
+    const { history } = this.props;
+    history.push('/');
+  };
+
   render() {
     const { username, actGetUser } = this.props;
     actGetUser();
     if (username && username !== undefined) {
       return (
         <div>
-          <p className="title">LEARNER PAGE</p>
+          <p className="title">TEACHER PAGE</p>
+          <IntroduceForm history={this.history} />
         </div>
       );
     } else {
       return <Redirect to="/" />;
     }
   }
-=======
-
-function HomePage() {
-  return (
-    <div>
-      <p className="title">LEARNER PAGE</p>
-    </div>
-  );
->>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
 }
 
 const mapStateToProps = state => ({
@@ -51,4 +53,4 @@ const mapDispatchToProps = dispatch => ({
   actLogout: () => dispatch(actLogout())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LearnerPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TeacherPage);

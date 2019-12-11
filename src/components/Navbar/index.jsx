@@ -9,14 +9,39 @@ import './style.css';
 
 class Navbar extends React.Component {
   render() {
-    const { username, actLogout } = this.props;
-    let login, logout, register_learner, register_teacher;
+    const { username, strategy, actLogout, actGetUser } = this.props;
+    let login,
+      logout,
+      register_learner,
+      register_teacher,
+      learner,
+      teacher,
+      update_info_register;
+    actGetUser();
     if (username && username !== undefined) {
       logout = (
         <Menu.Item key="logout">
           <Button onClick={actLogout}>Logout</Button>
         </Menu.Item>
       );
+      update_info_register = (
+        <Menu.Item key="update_info_register">
+          <Link to="/update-info-register">Update Info Register</Link>
+        </Menu.Item>
+      );
+      if (strategy === 'learner') {
+        learner = (
+          <Menu.Item key="learner">
+            <Link to="/learner">Learner</Link>
+          </Menu.Item>
+        );
+      } else if (strategy === 'teacher') {
+        teacher = (
+          <Menu.Item key="teacher">
+            <Link to="/teacher">Teacher</Link>
+          </Menu.Item>
+        );
+      }
     } else {
       login = (
         <Menu.Item key="login">
@@ -39,16 +64,32 @@ class Navbar extends React.Component {
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
+<<<<<<< HEAD
+        <Menu.Item key="teacher-list">
+          <Link to="/teacher-list">Teacher page</Link>
+=======
+<<<<<<<< HEAD:src/components/Navbar/index.jsx
         <Menu.Item key="teacher">
           <Link to="/teacher">Teacher page</Link>
+>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
         </Menu.Item>
         <Menu.Item key="teacher-detail">
           <Link to="/teacher-detail">Teacher detail</Link>
         </Menu.Item>
+<<<<<<< HEAD
+        {learner}
+        {teacher}
+=======
+========
+        {learner}
+        {teacher}
+>>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3:src/components/Navbar.jsx
+>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
         {logout}
         {login}
         {register_learner}
         {register_teacher}
+        {update_info_register}
       </Menu>
     );
   }

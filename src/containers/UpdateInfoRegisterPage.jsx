@@ -1,32 +1,24 @@
 import React from 'react';
-<<<<<<< HEAD
+import UpdateInfoRegisterForm from '../components/UpdateInfoRegisterForm';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
 
-class LearnerPage extends React.Component {
+class UpdateInfoRegisterPage extends React.Component {
   render() {
     const { username, actGetUser } = this.props;
     actGetUser();
     if (username && username !== undefined) {
       return (
         <div>
-          <p className="title">LEARNER PAGE</p>
+          <p className="title">UPDATE INFOMATION REGISTER</p>
+          <UpdateInfoRegisterForm history={this.history} />
         </div>
       );
     } else {
       return <Redirect to="/" />;
     }
   }
-=======
-
-function HomePage() {
-  return (
-    <div>
-      <p className="title">LEARNER PAGE</p>
-    </div>
-  );
->>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
 }
 
 const mapStateToProps = state => ({
@@ -51,4 +43,7 @@ const mapDispatchToProps = dispatch => ({
   actLogout: () => dispatch(actLogout())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LearnerPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UpdateInfoRegisterPage);

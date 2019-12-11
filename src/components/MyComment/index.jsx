@@ -56,7 +56,11 @@ class MyComment extends React.Component {
     return (
       <Comment
         actions={actions}
+<<<<<<< HEAD
+        author={<p class="job">Task</p>}
+=======
         author={<a class="job">Task</a>}
+>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
         
         content={
           <div>

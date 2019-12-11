@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const api_url = 'https://api-user-gia-su.herokuapp.com';
+// const api_url = 'https://api-user-gia-su.herokuapp.com';
+const api_url = 'http://localhost:3000';
+
 
 export function callApiLogin(body) {
     return axios({
@@ -46,6 +48,44 @@ export function callApiRegister(body) {
             birthday: body.birthday._d,
             address: body.address,
             strategy: body.strategy
+        }
+    });
+}
+
+export function callApiUpdateInfoRegister(body) {
+    console.log(body)
+    return axios({
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${body.token}`
+        },
+        url: `${api_url}/user/update-info-register`,
+        data: {
+            username: body.username,
+            phone: body.phone,
+            fullname: body.fullname,
+            email: body.email,
+            avatar: body.avatar,
+            birthday: body.birthday._d,
+            address: body.address
+        }
+    });
+}
+
+
+export function callApiIntroduction(body) {
+    console.log(body)
+    return axios({
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${body.token}`
+        },
+        url: `${api_url}/user/introduction`,
+        data: {
+            introduce: body.introduce,
+            teaching_address: body.teaching_address,
+            price_per_hour: body.price_per_hour,
+            tags: body.tags
         }
     });
 }

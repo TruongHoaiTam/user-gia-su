@@ -1,7 +1,21 @@
 body {
+<<<<<<< HEAD
+  background: #4ecdc4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #556270,
+    #4ecdc4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #556270,
+    #4ecdc4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+=======
   background: #4ECDC4;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #556270, #4ECDC4);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #556270, #4ECDC4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
 }
 
 .login-form {
@@ -104,6 +118,26 @@ body {
   opacity: 0.6;
 }
 
+<<<<<<< HEAD
+.introduce-form {
+  max-width: 1200px;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+/* Customize */
+/* Button */
+.ant-btn-primary {
+  background-color: #50a4a4 !important;
+  border-color: #50a4a4 !important;
+}
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  color: #fff;
+  background-color: #4ec6bf !important;
+  border-color: #4ec6bf !important;
+}
+=======
 /* Customize */
 /* Button */
 .ant-btn-primary {
@@ -115,3 +149,4 @@ body {
   background-color: #4EC6BF !important;
   border-color: #4EC6BF !important;
 }
+>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
