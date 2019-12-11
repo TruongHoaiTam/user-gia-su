@@ -1,3 +1,9 @@
+body {
+  background: #4ECDC4;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #556270, #4ECDC4);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #556270, #4ECDC4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .login-form {
   max-width: 300px;
   margin-left: 40%;
@@ -96,4 +102,16 @@
 .btnGoogle:hover {
   background: #db3236;
   opacity: 0.6;
+}
+
+/* Customize */
+/* Button */
+.ant-btn-primary {
+  background-color: #50A4A4 !important;
+  border-color: #50A4A4 !important;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  color: #fff;
+  background-color: #4EC6BF !important;
+  border-color: #4EC6BF !important;
 }

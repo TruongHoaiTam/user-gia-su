@@ -1,0 +1,57 @@
+.usercard {
+  max-width: 945px;
+}
+.info-avatar {
+  display: relative;
+}
+.info-avatar::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.avatar-container {
+  float: left;
+  width: 150px;
+  height: 90px;
+  text-align: center;
+}
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}
+.short-info {
+  float: left;
+  min-width: 450px;
+  height: 90px;
+  margin-bottom: 14px;
+}
+ .short-info p {
+   margin-bottom: 7px;
+ }
+.flex {
+ display: flex;
+ width: 100%;
+ margin-top: -6px;
+}
+.flex p {
+  margin-top: 8px;
+  flex: 1;
+}
+.content {
+  margin-left: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    margin-left: 0px;
+  }
+}
+
+/* Content */
+.tags {
+  margin-bottom: 16px;
+}
+.des {
+  margin-bottom: 16px;
+}
