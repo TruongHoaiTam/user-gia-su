@@ -38,6 +38,12 @@ class Navbar extends React.Component {
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
+        <Menu.Item key="teacher">
+          <Link to="/teacher">Teacher page</Link>
+        </Menu.Item>
+        <Menu.Item key="teacher-detail">
+          <Link to="/teacher-detail">Teacher detail</Link>
+        </Menu.Item>
         {logout}
         {login}
         {register_learner}
