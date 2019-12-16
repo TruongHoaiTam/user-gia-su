@@ -22,7 +22,12 @@ export const actLoginRequest = user => {
                 localStorage.setItem('birthday', res.data.user.birthday);
                 localStorage.setItem('strategy', res.data.user.strategy);
                 localStorage.setItem('token', res.data.token);
-                dispatch(actLogin(res.data));
+
+
+                localStorage.setItem('introduce', res.data.user.introduce);
+                localStorage.setItem('teaching_address', res.data.user.teaching_address);
+                localStorage.setItem('price_per_hour', res.data.user.price_per_hour);
+                localStorage.setItem('tags', res.data.user.tags);
             })
             .catch(() => {
                 dispatch(actLoginErr());
@@ -75,7 +80,12 @@ export const actGetUser = () => {
                 birthday: localStorage.getItem('birthday'),
                 address: localStorage.getItem('address'),
                 strategy: localStorage.getItem('strategy'),
-                token: localStorage.getItem('token')
+                token: localStorage.getItem('token'),
+
+                introduce: localStorage.getItem('introduce'),
+                teaching_address: localStorage.getItem('teaching_address'),
+                price_per_hour: localStorage.getItem('price_per_hour'),
+                tags: localStorage.getItem('tags'),
             })
         );
     };
@@ -93,6 +103,18 @@ export const actLogout = () => {
         localStorage.removeItem('address');
         localStorage.removeItem('strategy');
         localStorage.removeItem('token');
+
+        localStorage.removeItem('introduce');
+        localStorage.removeItem('teaching_address');
+        localStorage.removeItem('price_per_hour');
+        localStorage.removeItem('tags');
         dispatch(actLogin({ username: undefined, token: undefined }));
     };
 };
+
+export const actSaveIntroduction = info => ({
+    type: 'SAVE_INTRODUCTION',
+    info
+});
+
+

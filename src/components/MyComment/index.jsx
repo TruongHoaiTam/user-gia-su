@@ -7,14 +7,14 @@ class MyComment extends React.Component {
   state = {
     likes: 0,
     dislikes: 0,
-    action: null,
+    action: null
   };
 
   like = () => {
     this.setState({
       likes: 1,
       dislikes: 0,
-      action: 'liked',
+      action: 'liked'
     });
   };
 
@@ -22,7 +22,7 @@ class MyComment extends React.Component {
     this.setState({
       likes: 0,
       dislikes: 1,
-      action: 'disliked',
+      action: 'disliked'
     });
   };
 
@@ -50,25 +50,20 @@ class MyComment extends React.Component {
         </Tooltip>
         <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
       </span>,
-      <span key="comment-basic-reply-to">Reply to</span>,
+      <span key="comment-basic-reply-to">Reply to</span>
     ];
 
     return (
       <Comment
         actions={actions}
-<<<<<<< HEAD
-        author={<p class="job">Task</p>}
-=======
-        author={<a class="job">Task</a>}
->>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
-        
+        author={<p className="job">Task</p>}
         content={
           <div>
             <Rate disabled defaultValue={4} className="rating" />
-            <p class="italic">
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure), to help people create their product prototypes beautifully
-              and efficiently.
+            <p className="italic">
+              We supply a series of design principles, practical patterns and
+              high quality design resources (Sketch and Axure), to help people
+              create their product prototypes beautifully and efficiently.
             </p>
           </div>
         }

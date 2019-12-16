@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { Form, Input, Select, Button, Modal, DatePicker } from 'antd';
 import Avatar from './Avatar';
 import { callApiUpdateInfoRegister } from '../utils/apiCaller';
@@ -18,7 +19,6 @@ class UpdateInfoRegistrationForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         values.avatar = localStorage.getItem('imageUrl');
         values.token = localStorage.getItem('token');
         return callApiUpdateInfoRegister(values)
@@ -26,7 +26,7 @@ class UpdateInfoRegistrationForm extends React.Component {
             const { history } = this.props;
             history();
           })
-          .catch(() => {
+          .catch(err => {
             const { info } = Modal;
             info({
               title: 'Thông báo',
@@ -39,6 +39,21 @@ class UpdateInfoRegistrationForm extends React.Component {
   };
 
   render() {
+    const {
+      username,
+      email,
+      phone,
+      fullname,
+      avatar,
+      birthday,
+      address
+    } = this.props;
+    const birthday_moment =
+      birthday.slice(0, 4) +
+      '/' +
+      birthday.slice(5, 7) +
+      '/' +
+      birthday.slice(8, 10);
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {
@@ -78,9 +93,11 @@ class UpdateInfoRegistrationForm extends React.Component {
           onSubmit={this.handleSubmit}
           className="register-form"
         >
-          <Avatar />
+          <Avatar value={avatar} />
           <Form.Item label="Username">
-            {getFieldDecorator('username', {})(<Input />)}
+            {getFieldDecorator('username', {
+              initialValue: username
+            })(<Input />)}
           </Form.Item>
           <Form.Item label="E-mail">
             {getFieldDecorator('email', {
@@ -89,23 +106,31 @@ class UpdateInfoRegistrationForm extends React.Component {
                   type: 'email',
                   message: 'The input is not valid E-mail!'
                 }
-              ]
+              ],
+              initialValue: email
             })(<Input />)}
           </Form.Item>
           <Form.Item label="Full Name">
-            {getFieldDecorator('fullname', {})(<Input />)}
+            {getFieldDecorator('fullname', {
+              initialValue: fullname
+            })(<Input />)}
           </Form.Item>
           <Form.Item label="Phone Number">
-            {getFieldDecorator(
-              'phone',
-              {}
-            )(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
+            {getFieldDecorator('phone', {
+              initialValue: phone
+            })(
+              <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+            )}
           </Form.Item>
           <Form.Item label="Birthday">
-            {getFieldDecorator('birthday', {})(<DatePicker />)}
+            {getFieldDecorator('birthday', {
+              initialValue: moment(birthday_moment, 'YYYY-MM-DD')
+            })(<DatePicker />)}
           </Form.Item>
           <Form.Item label="Address">
-            {getFieldDecorator('address', {})(<Input />)}
+            {getFieldDecorator('address', {
+              initialValue: address
+            })(<Input />)}
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit">
@@ -124,7 +149,7 @@ const mapStateToProps = state => ({
   phone: state.auth.phone,
   fullname: state.auth.fullname,
   avatar: state.auth.avatar,
-  dob: state.auth.dob,
+  birthday: state.auth.birthday,
   address: state.auth.address,
 
   token: state.auth.token,
@@ -133,10 +158,10 @@ const mapStateToProps = state => ({
 
   err: state.auth.err,
 
-  introduce: state.teacher.introduce,
-  teaching_address: state.teacher.teaching_address,
-  price_per_hour: state.teacher.price_per_hour,
-  tags: state.teacher.tags
+  introduce: state.auth.introduce,
+  teaching_address: state.auth.teaching_address,
+  price_per_hour: state.auth.price_per_hour,
+  tags: state.auth.tags
 });
 
 const mapDispatchToProps = dispatch => ({

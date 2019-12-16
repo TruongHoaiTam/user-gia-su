@@ -5,6 +5,10 @@ import { Redirect } from 'react-router-dom';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
 
 class UpdateInfoRegisterPage extends React.Component {
+  history = () => {
+    const { actLogout } = this.props;
+    actLogout();
+  };
   render() {
     const { username, actGetUser } = this.props;
     actGetUser();
@@ -27,7 +31,7 @@ const mapStateToProps = state => ({
   phone: state.auth.phone,
   fullname: state.auth.fullname,
   avatar: state.auth.avatar,
-  dob: state.auth.dob,
+  birthday: state.auth.birthday,
   address: state.auth.address,
 
   token: state.auth.token,

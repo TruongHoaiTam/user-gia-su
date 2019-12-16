@@ -1,34 +1,43 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Tag, Icon, Dropdown, Button, Menu } from 'antd';
+import { connect } from 'react-redux';
 import { TweenOneGroup } from 'rc-tween-one';
+import { callApiGetAllTag } from '../utils/apiCaller';
+import {
+  actLoginRequest,
+  actGetUser,
+  actLogout,
+  actSaveIntroduction
+} from '../actions/Auth';
 
 class EditableTagGroup extends React.Component {
   state = {
-    tags: [],
+    tags_display: [],
     inputVisible: false
   };
 
   handleMenuClick = e => {
-    console.log('click:', e.item.props.children[1]);
-    this.handleConfirm(e.item.props.children[1]);
+    this.handleConfirm(e.item.props.children);
   };
 
   handleClose = removedTag => {
-    const tags = this.state.tags.filter(tag => tag !== removedTag);
-    console.log(tags);
-    this.setState({ tags });
+    const tags_display = this.state.tags_display.filter(
+      tag => tag !== removedTag
+    );
+    localStorage.setItem('tags_display', tags_display);
+    this.setState({ tags_display });
   };
 
   handleConfirm = inputValue => {
-    let { tags } = this.state;
-    if (inputValue && tags.indexOf(inputValue) === -1) {
-      tags = [...tags, inputValue];
+    let { tags_display } = this.state;
+    if (inputValue && tags_display.indexOf(inputValue) === -1) {
+      tags_display = [...tags_display, inputValue];
     }
-    localStorage.tags = tags;
+    localStorage.setItem('tags_display', tags_display);
 
     this.setState({
-      tags,
+      tags_display,
       inputVisible: false
     });
   };
@@ -52,24 +61,34 @@ class EditableTagGroup extends React.Component {
     );
   };
 
+  componentWillMount() {
+    callApiGetAllTag().then(result => {
+      let data = [];
+      result.data.forEach(item => {
+        data.push({
+          tag: item.tag
+        });
+      });
+      const { actSaveIntroduction } = this.props;
+      actSaveIntroduction({ all_tags: data });
+    });
+    const { tags } = this.props;
+    this.setState({
+      tags_display: tags.split(',')
+    });
+  }
+
   render() {
-    const { tags } = this.state;
-    const tagChild = tags.map(this.forMap);
+    const { tags_display } = this.state;
+    const { all_tags } = this.props;
+
+    const tagChild = tags_display.map(this.forMap);
 
     const menu = (
       <Menu onClick={this.handleMenuClick}>
-        <Menu.Item key="1">
-          <Icon type="user" />
-          1st menu item
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Icon type="user" />
-          2nd menu item
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Icon type="user" />
-          3rd item
-        </Menu.Item>
+        {all_tags.map((item, index) => (
+          <Menu.Item key={index}>{item.tag}</Menu.Item>
+        ))}
       </Menu>
     );
     return (
@@ -99,4 +118,34 @@ class EditableTagGroup extends React.Component {
   }
 }
 
-export default EditableTagGroup;
+const mapStateToProps = state => ({
+  username: state.auth.username,
+  email: state.auth.email,
+  phone: state.auth.phone,
+  fullname: state.auth.fullname,
+  avatar: state.auth.avatar,
+  birthday: state.auth.birthday,
+  address: state.auth.address,
+
+  token: state.auth.token,
+  strategy: state.auth.strategy,
+  token_fb_gg: state.auth.token_fb_gg,
+
+  err: state.auth.err,
+
+  all_tags: state.auth.all_tags,
+
+  introduce: state.auth.introduce,
+  teaching_address: state.auth.teaching_address,
+  price_per_hour: state.auth.price_per_hour
+});
+
+const mapDispatchToProps = dispatch => ({
+  actLoginRequest: user => dispatch(actLoginRequest(user)),
+  actGetUser: () => dispatch(actGetUser()),
+  actLogout: () => dispatch(actLogout()),
+
+  actSaveIntroduction: info => dispatch(actSaveIntroduction(info))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditableTagGroup);

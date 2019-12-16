@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
@@ -18,15 +17,6 @@ class LearnerPage extends React.Component {
       return <Redirect to="/" />;
     }
   }
-=======
-
-function HomePage() {
-  return (
-    <div>
-      <p className="title">LEARNER PAGE</p>
-    </div>
-  );
->>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
 }
 
 const mapStateToProps = state => ({
@@ -35,7 +25,7 @@ const mapStateToProps = state => ({
   phone: state.auth.phone,
   fullname: state.auth.fullname,
   avatar: state.auth.avatar,
-  dob: state.auth.dob,
+  birthday: state.auth.birthday,
   address: state.auth.address,
 
   token: state.auth.token,

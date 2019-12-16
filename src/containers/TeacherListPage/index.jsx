@@ -1,18 +1,20 @@
-
-
 import React from 'react';
 import Teachers from '../../components/Teachers';
-import Filter from '../../components/Filter';
 import './style.css';
 
-function HomePage() {
-  return (
-    <div className="center">
-      <Filter></Filter>
-      <Teachers></Teachers>
-      <Teachers></Teachers>
-    </div>
-  );
+class TeacherListPage extends React.Component {
+  history = () => {
+    const { history } = this.props;
+    history.push('/teacher-detail');
+  };
+
+  render() {
+    return (
+      <div className="center">
+        <Teachers history={() => this.history()} />
+      </div>
+    );
+  }
 }
 
-export default HomePage;
+export default TeacherListPage;

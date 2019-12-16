@@ -48,6 +48,13 @@ class NumericInputDemo extends React.Component {
     this.setState({ value });
   };
 
+  componentWillMount() {
+    const { price_per_hour } = this.props;
+    this.setState({
+      value: price_per_hour === undefined ? '' : price_per_hour
+    });
+  }
+
   render() {
     return (
       <NumericInput

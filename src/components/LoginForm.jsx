@@ -13,7 +13,6 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         const { actLoginRequest } = this.props;
         actLoginRequest(values);
       }
@@ -100,7 +99,7 @@ const mapStateToProps = state => ({
   phone: state.auth.phone,
   fullname: state.auth.fullname,
   avatar: state.auth.avatar,
-  dob: state.auth.dob,
+  birthday: state.auth.birthday,
   address: state.auth.address,
 
   token: state.auth.token,

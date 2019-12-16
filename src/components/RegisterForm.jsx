@@ -16,7 +16,6 @@ class RegistrationForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         if (window.location.pathname === '/register-learner') {
           values.strategy = 'learner';
         } else if (window.location.pathname === '/register-teacher') {

@@ -11,7 +11,14 @@ const initState = {
     strategy: undefined,
     token_fb_gg: undefined,
 
-    err: undefined
+    err: undefined,
+
+    introduce: undefined,
+    teaching_address: undefined,
+    price_per_hour: undefined,
+    tags: [],
+
+    all_tags: []
 };
 
 export default function auth(state = initState, action) {
@@ -28,8 +35,13 @@ export default function auth(state = initState, action) {
                 address: action.user.address,
                 token: action.user.token,
                 strategy: action.user.strategy,
-                err: undefined
-            };
+                err: undefined,
+
+                introduce: action.user.introduce,
+                teaching_address: action.user.teaching_address,
+                price_per_hour: action.user.price_per_hour,
+                tags: action.user.tags
+            }
             return state;
         case 'LOGIN_ERR': {
             state = {
@@ -43,7 +55,12 @@ export default function auth(state = initState, action) {
                 address: undefined,
                 token: undefined,
                 strategy: undefined,
-                err: 400
+                err: 400,
+
+                introduce: undefined,
+                teaching_address: undefined,
+                price_per_hour: undefined,
+                tags: undefined
             };
             return state;
         }
@@ -56,6 +73,18 @@ export default function auth(state = initState, action) {
                 email: action.values.user.email,
                 err: undefined
             }
+            return state;
+        }
+        case 'SAVE_INTRODUCTION': {
+            state = {
+                ...state,
+                introduce: action.info.introduce,
+                teaching_address: action.info.teaching_address,
+                price_per_hour: action.info.price_per_hour,
+                tags: action.info.tags,
+
+                all_tags: action.info.all_tags
+            };
             return state;
         }
         default:

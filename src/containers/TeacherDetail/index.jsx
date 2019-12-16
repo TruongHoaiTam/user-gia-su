@@ -1,11 +1,11 @@
 import React from 'react';
-import UserDetail from '../../components/UserDetail';
+import TeacherDetail from '../../components/TeacherDetail';
 import './style.css';
 
 function HomePage() {
   return (
     <div className="center">
-      <UserDetail></UserDetail>
+      <TeacherDetail></TeacherDetail>
     </div>
   );
 }

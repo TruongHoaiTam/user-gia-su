@@ -23,7 +23,6 @@ class LoginFacebookGoogle extends React.Component {
   };
 
   googleResponse = e => {
-    console.log(e);
     const options = { access_token: e.accessToken };
     const { actLoginGoogleRequest } = this.props;
     actLoginGoogleRequest(options);

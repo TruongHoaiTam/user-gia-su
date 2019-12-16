@@ -11,8 +11,8 @@ class TeacherPage extends React.Component {
   };
 
   history = () => {
-    const { history } = this.props;
-    history.push('/');
+    const { actLogout } = this.props;
+    actLogout();
   };
 
   render() {
@@ -37,7 +37,7 @@ const mapStateToProps = state => ({
   phone: state.auth.phone,
   fullname: state.auth.fullname,
   avatar: state.auth.avatar,
-  dob: state.auth.dob,
+  birthday: state.auth.birthday,
   address: state.auth.address,
 
   token: state.auth.token,

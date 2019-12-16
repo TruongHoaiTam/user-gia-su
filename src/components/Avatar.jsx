@@ -34,7 +34,6 @@ class Avatar extends React.Component {
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl => {
-        console.log(imageUrl);
         localStorage.imageUrl = imageUrl;
         this.setState({
           imageUrl,
@@ -51,7 +50,9 @@ class Avatar extends React.Component {
         <div className="ant-upload-text">Avatar</div>
       </div>
     );
-    const { imageUrl } = this.state;
+    let { imageUrl } = this.state;
+    const { value } = this.props;
+    const avatar = value === 'uploads\no-avatar.jpg' ? imageUrl : value;
     return (
       <Upload
         name="avatar"
@@ -64,6 +65,8 @@ class Avatar extends React.Component {
       >
         {imageUrl ? (
           <img src={imageUrl} alt="avatar" style={{ width: '100%' }} />
+        ) : avatar ? (
+          <img src={avatar} alt="avatar" style={{ width: '100%' }} />
         ) : (
           uploadButton
         )}

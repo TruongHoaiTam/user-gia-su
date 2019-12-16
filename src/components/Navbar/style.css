@@ -1,4 +1,4 @@
-.navbar  {
+.navbar {
   background: transparent;
   font-family: 'Montserrat', sans-serif;
 }
@@ -7,11 +7,10 @@
   font-size: larger;
 }
 .ant-menu-item a {
-  color: #B6D5D4 !important;
+  color: rgb(110, 214, 211) !important;
 }
 .ant-menu-item-selected a {
   color: white !important;
-  
 }
 .ant-menu-item-selected {
   border-bottom: 2px solid rgba(88, 236, 226, 0.897) !important;

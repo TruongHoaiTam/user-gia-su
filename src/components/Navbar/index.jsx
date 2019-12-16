@@ -64,27 +64,11 @@ class Navbar extends React.Component {
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
-<<<<<<< HEAD
         <Menu.Item key="teacher-list">
           <Link to="/teacher-list">Teacher page</Link>
-=======
-<<<<<<<< HEAD:src/components/Navbar/index.jsx
-        <Menu.Item key="teacher">
-          <Link to="/teacher">Teacher page</Link>
->>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
         </Menu.Item>
-        <Menu.Item key="teacher-detail">
-          <Link to="/teacher-detail">Teacher detail</Link>
-        </Menu.Item>
-<<<<<<< HEAD
         {learner}
         {teacher}
-=======
-========
-        {learner}
-        {teacher}
->>>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3:src/components/Navbar.jsx
->>>>>>> 7afe7210f57073b897336c43a7b8f742112476a3
         {logout}
         {login}
         {register_learner}
@@ -101,7 +85,7 @@ const mapStateToProps = state => ({
   phone: state.auth.phone,
   fullname: state.auth.fullname,
   avatar: state.auth.avatar,
-  dob: state.auth.dob,
+  birthday: state.auth.birthday,
   address: state.auth.address,
 
   token: state.auth.token,
