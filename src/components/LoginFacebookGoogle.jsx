@@ -63,6 +63,7 @@ class LoginFacebookGoogle extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -71,6 +72,7 @@ const mapStateToProps = state => ({
   dob: state.auth.dob,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

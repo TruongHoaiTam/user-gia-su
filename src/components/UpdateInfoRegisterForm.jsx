@@ -41,6 +41,7 @@ class UpdateInfoRegistrationForm extends React.Component {
   render() {
     const {
       username,
+      status,
       email,
       phone,
       fullname,
@@ -86,64 +87,67 @@ class UpdateInfoRegistrationForm extends React.Component {
       </Select>
     );
 
-    return (
-      <div>
-        <Form
-          {...formItemLayout}
-          onSubmit={this.handleSubmit}
-          className="register-form"
-        >
-          <Avatar value={avatar} />
-          <Form.Item label="Username">
-            {getFieldDecorator('username', {
-              initialValue: username
-            })(<Input />)}
-          </Form.Item>
-          <Form.Item label="E-mail">
-            {getFieldDecorator('email', {
-              rules: [
-                {
-                  type: 'email',
-                  message: 'The input is not valid E-mail!'
-                }
-              ],
-              initialValue: email
-            })(<Input />)}
-          </Form.Item>
-          <Form.Item label="Full Name">
-            {getFieldDecorator('fullname', {
-              initialValue: fullname
-            })(<Input />)}
-          </Form.Item>
-          <Form.Item label="Phone Number">
-            {getFieldDecorator('phone', {
-              initialValue: phone
-            })(
-              <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
-            )}
-          </Form.Item>
-          <Form.Item label="Birthday">
-            {getFieldDecorator('birthday', {
-              initialValue: moment(birthday_moment, 'YYYY-MM-DD')
-            })(<DatePicker />)}
-          </Form.Item>
-          <Form.Item label="Address">
-            {getFieldDecorator('address', {
-              initialValue: address
-            })(<Input />)}
-          </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
-              Update
-            </Button>
-          </Form.Item>
-        </Form>
-      </div>
-    );
+    if (username && username !== undefined && status === 'active') {
+      return (
+        <div>
+          <Form
+            {...formItemLayout}
+            onSubmit={this.handleSubmit}
+            className="register-form"
+          >
+            <Avatar value={avatar} />
+            <Form.Item label="Username">
+              {getFieldDecorator('username', {
+                initialValue: username
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="E-mail">
+              {getFieldDecorator('email', {
+                rules: [
+                  {
+                    type: 'email',
+                    message: 'The input is not valid E-mail!'
+                  }
+                ],
+                initialValue: email
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Full Name">
+              {getFieldDecorator('fullname', {
+                initialValue: fullname
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="Phone Number">
+              {getFieldDecorator('phone', {
+                initialValue: phone
+              })(
+                <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+              )}
+            </Form.Item>
+            <Form.Item label="Birthday">
+              {getFieldDecorator('birthday', {
+                initialValue: moment(birthday_moment, 'YYYY-MM-DD')
+              })(<DatePicker />)}
+            </Form.Item>
+            <Form.Item label="Address">
+              {getFieldDecorator('address', {
+                initialValue: address
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item {...tailFormItemLayout}>
+              <Button type="primary" htmlType="submit">
+                Update
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -152,6 +156,7 @@ const mapStateToProps = state => ({
   birthday: state.auth.birthday,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

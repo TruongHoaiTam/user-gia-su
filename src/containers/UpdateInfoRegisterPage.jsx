@@ -9,10 +9,15 @@ class UpdateInfoRegisterPage extends React.Component {
     const { actLogout } = this.props;
     actLogout();
   };
-  render() {
-    const { username, actGetUser } = this.props;
+
+  componentDidUpdate() {
+    const { actGetUser } = this.props;
     actGetUser();
-    if (username && username !== undefined) {
+  }
+
+  render() {
+    const { username, status } = this.props;
+    if (username && username !== undefined && status === 'active') {
       return (
         <div>
           <p className="title">UPDATE INFOMATION REGISTER</p>
@@ -26,6 +31,7 @@ class UpdateInfoRegisterPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -34,6 +40,7 @@ const mapStateToProps = state => ({
   birthday: state.auth.birthday,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

@@ -8,17 +8,21 @@ import { Button } from 'antd';
 import './style.css';
 
 class Navbar extends React.Component {
+  componentDidUpdate() {
+    const { actGetUser } = this.props;
+    actGetUser();
+  }
   render() {
-    const { username, strategy, actLogout, actGetUser } = this.props;
+    const { username, status, strategy, actLogout } = this.props;
     let login,
       logout,
       register_learner,
       register_teacher,
       learner,
       teacher,
+      teacher_list,
       update_info_register;
-    actGetUser();
-    if (username && username !== undefined) {
+    if (username && username !== undefined && status === 'active') {
       logout = (
         <Menu.Item key="logout">
           <Button onClick={actLogout}>Logout</Button>
@@ -29,10 +33,16 @@ class Navbar extends React.Component {
           <Link to="/update-info-register">Update Info Register</Link>
         </Menu.Item>
       );
+
       if (strategy === 'learner') {
         learner = (
           <Menu.Item key="learner">
             <Link to="/learner">Learner</Link>
+          </Menu.Item>
+        );
+        teacher_list = (
+          <Menu.Item key="teacher-list">
+            <Link to="/teacher-list">Teacher page</Link>
           </Menu.Item>
         );
       } else if (strategy === 'teacher') {
@@ -43,6 +53,11 @@ class Navbar extends React.Component {
         );
       }
     } else {
+      teacher_list = (
+        <Menu.Item key="teacher-list">
+          <Link to="/teacher-list">Teacher page</Link>
+        </Menu.Item>
+      );
       login = (
         <Menu.Item key="login">
           <Link to="/login">Login</Link>
@@ -64,9 +79,7 @@ class Navbar extends React.Component {
         <Menu.Item key="home">
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Menu.Item key="teacher-list">
-          <Link to="/teacher-list">Teacher page</Link>
-        </Menu.Item>
+        {teacher_list}
         {learner}
         {teacher}
         {logout}
@@ -80,6 +93,7 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -88,6 +102,7 @@ const mapStateToProps = state => ({
   birthday: state.auth.birthday,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

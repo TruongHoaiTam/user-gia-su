@@ -48,7 +48,8 @@ export function callApiRegister(body) {
             avatar: body.avatar,
             birthday: body.birthday._d,
             address: body.address,
-            strategy: body.strategy
+            strategy: body.strategy,
+            status: body.status
         }
     });
 }
@@ -112,6 +113,22 @@ export function callApiGetAllTag() {
     return axios({
         method: 'GET',
         url: `${api_admin_url}/tag`,
+    });
+}
+
+export function callApiAddContractUser(contract) {
+    return axios({
+        method: 'PUT',
+        url: `${api_user_url}/contract`,
+        data: contract
+    });
+}
+
+export function callApiAddContractAdmin(contract) {
+    return axios({
+        method: 'POST',
+        url: `${api_admin_url}/contract`,
+        data: contract
     });
 }
 

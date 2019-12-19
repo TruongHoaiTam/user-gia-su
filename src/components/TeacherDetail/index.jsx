@@ -2,14 +2,33 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import './style.css';
 
-import { Card, Rate, Tag } from 'antd';
+import { Card, Rate, Tag, Button } from 'antd';
 import MyComment from '../MyComment/index';
 import { connect } from 'react-redux';
 import { actSetCurrentTeacher } from '../../actions/Detail';
 
 class TeacherDetail extends React.Component {
+  handleClick = () => {
+    const { history } = this.props;
+    history();
+  };
+
   render() {
-    const { current_teacher } = this.props;
+    const { current_teacher, username, strategy, status } = this.props;
+
+    let submit;
+    if (
+      username &&
+      username !== undefined &&
+      status === 'active' &&
+      strategy === 'learner'
+    ) {
+      submit = (
+        <Button type="primary" onClick={() => this.handleClick()}>
+          Xem hợp đồng
+        </Button>
+      );
+    }
     return (
       <div>
         <Card style={{ height: 200 }}>
@@ -55,14 +74,12 @@ class TeacherDetail extends React.Component {
               </p>
             </div>
             <div className="flex">
-              <p>
-                <b>Kỹ năng: </b>
-                <div className="tags">
-                  {current_teacher.tags.map((item, index) => (
-                    <Tag key={index}>{item}</Tag>
-                  ))}
-                </div>
-              </p>
+              <b>Kỹ năng: </b>
+              <div className="tags">
+                {current_teacher.tags.map((item, index) => (
+                  <Tag key={index}>{item}</Tag>
+                ))}
+              </div>
             </div>
             <p className="des">
               <b>Giới thiệu: </b>
@@ -73,6 +90,7 @@ class TeacherDetail extends React.Component {
               <Rate disabled defaultValue={4.5} className="rating" />
             </div>
             <br />
+            {submit}
           </div>
         </Card>
 
@@ -87,6 +105,22 @@ class TeacherDetail extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
+  username: state.auth.username,
+  email: state.auth.email,
+  phone: state.auth.phone,
+  fullname: state.auth.fullname,
+  avatar: state.auth.avatar,
+  birthday: state.auth.birthday,
+  address: state.auth.address,
+
+  status: state.auth.status,
+  token: state.auth.token,
+  strategy: state.auth.strategy,
+  token_fb_gg: state.auth.token_fb_gg,
+
+  err: state.auth.err,
+
   current_teacher: state.detail.current_teacher
 });
 

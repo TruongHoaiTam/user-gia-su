@@ -38,10 +38,15 @@ class NormalIntroduceForm extends React.Component {
     });
   };
 
+  componentDidUpdate() {
+    const { actGetUser } = this.props;
+    actGetUser();
+  }
+
   render() {
     const {
       username,
-      actGetUser,
+      status,
 
       tags,
       teaching_address,
@@ -49,9 +54,8 @@ class NormalIntroduceForm extends React.Component {
       introduce
     } = this.props;
     const { getFieldDecorator } = this.props.form;
-    actGetUser();
 
-    if (username && username !== undefined) {
+    if (username && username !== undefined && status === 'active') {
       return (
         <div>
           <Form onSubmit={this.handleSubmit} className="introduce-form">
@@ -94,6 +98,7 @@ class NormalIntroduceForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -102,6 +107,7 @@ const mapStateToProps = state => ({
   birthday: state.auth.birthday,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

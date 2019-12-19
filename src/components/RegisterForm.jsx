@@ -22,6 +22,7 @@ class RegistrationForm extends React.Component {
           values.strategy = 'teacher';
         }
         values.avatar = localStorage.getItem('imageUrl');
+        values.status = 'active';
         return callApiRegister(values)
           .then(() => {
             const { history } = this.props;

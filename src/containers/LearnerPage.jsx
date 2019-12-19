@@ -4,10 +4,19 @@ import { Redirect } from 'react-router-dom';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
 
 class LearnerPage extends React.Component {
-  render() {
-    const { username, actGetUser } = this.props;
+  componentDidUpdate() {
+    const { actGetUser } = this.props;
     actGetUser();
-    if (username && username !== undefined) {
+  }
+
+  render() {
+    const { username, strategy, status } = this.props;
+    if (
+      username &&
+      username !== undefined &&
+      status === 'active' &&
+      strategy === 'learner'
+    ) {
       return (
         <div>
           <p className="title">LEARNER PAGE</p>
@@ -20,6 +29,7 @@ class LearnerPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -28,6 +38,7 @@ const mapStateToProps = state => ({
   birthday: state.auth.birthday,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

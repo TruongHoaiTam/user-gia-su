@@ -19,14 +19,25 @@ class NormalLoginForm extends React.Component {
     });
   };
 
-  render() {
-    const { username, strategy, err, actGetUser } = this.props;
-    const { getFieldDecorator } = this.props.form;
+  componentDidUpdate() {
+    const { actGetUser } = this.props;
     actGetUser();
+  }
 
-    if (username && username !== undefined) {
+  render() {
+    const { username, status, strategy, err } = this.props;
+    const { getFieldDecorator } = this.props.form;
+
+    if (username && username !== undefined && status === 'active') {
       if (strategy === 'learner') return <Redirect to="/learner" />;
       return <Redirect to="/teacher" />;
+    }
+    if (err === 'BLOCK') {
+      const { info } = Modal;
+      info({
+        title: 'Thông báo',
+        content: `Tài khoản của bạn đã bị khóa`
+      });
     }
     if (err === 400) {
       const { info } = Modal;
@@ -94,6 +105,7 @@ class NormalLoginForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  _id: state.auth._id,
   username: state.auth.username,
   email: state.auth.email,
   phone: state.auth.phone,
@@ -102,6 +114,7 @@ const mapStateToProps = state => ({
   birthday: state.auth.birthday,
   address: state.auth.address,
 
+  status: state.auth.status,
   token: state.auth.token,
   strategy: state.auth.strategy,
   token_fb_gg: state.auth.token_fb_gg,

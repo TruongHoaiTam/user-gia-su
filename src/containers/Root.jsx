@@ -12,8 +12,9 @@ import LearnerPage from './LearnerPage';
 import TeacherListPage from './TeacherListPage/index';
 import TeacherPage from './TeacherPage';
 import Navbar from '../components/Navbar/index';
-import TeacherDetail from './TeacherDetail/index';
+import TeacherDetailPage from './TeacherDetailPage/index';
 import UpdateInfoRegisterPage from './UpdateInfoRegisterPage';
+import ContractPage from './Contract/index';
 
 const Root = () => (
   <Provider store={store}>
@@ -24,9 +25,10 @@ const Root = () => (
         <Route path="/register-learner" component={RegisterLearnerPage} />
         <Route path="/register-teacher" component={RegisterTeacherPage} />
         <Route path="/learner" component={LearnerPage} />
-        <Route path="/teacher-detail" component={TeacherDetail} />
+        <Route path="/teacher-detail" component={TeacherDetailPage} />
         <Route path="/teacher-list" component={TeacherListPage} />
         <Route path="/teacher" component={TeacherPage} />
+        <Route path="/contract" component={ContractPage} />
         <Route
           path="/update-info-register"
           component={UpdateInfoRegisterPage}
