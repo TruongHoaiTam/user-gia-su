@@ -130,3 +130,9 @@ body {
   background-color: #4ec6bf !important;
   border-color: #4ec6bf !important;
 }
+
+.contract-table-list {
+  max-width: 1200px;
+  margin-left: 20%;
+  margin-right: 20%;
+}

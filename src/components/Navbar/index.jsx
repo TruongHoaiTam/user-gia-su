@@ -21,7 +21,9 @@ class Navbar extends React.Component {
       learner,
       teacher,
       teacher_list,
-      update_info_register;
+      update_info_register,
+      contract_learner,
+      contract_teacher;
     if (username && username !== undefined && status === 'active') {
       logout = (
         <Menu.Item key="logout">
@@ -41,8 +43,13 @@ class Navbar extends React.Component {
           </Menu.Item>
         );
         teacher_list = (
-          <Menu.Item key="teacher-list">
+          <Menu.Item key="teacher_list">
             <Link to="/teacher-list">Teacher page</Link>
+          </Menu.Item>
+        );
+        contract_learner = (
+          <Menu.Item key="contract_learner">
+            <Link to="/contract-learner">Contract learner</Link>
           </Menu.Item>
         );
       } else if (strategy === 'teacher') {
@@ -51,10 +58,15 @@ class Navbar extends React.Component {
             <Link to="/teacher">Teacher</Link>
           </Menu.Item>
         );
+        contract_teacher = (
+          <Menu.Item key="contract_teacher">
+            <Link to="/contract-teacher">Contract teacher</Link>
+          </Menu.Item>
+        );
       }
     } else {
       teacher_list = (
-        <Menu.Item key="teacher-list">
+        <Menu.Item key="teacher_list">
           <Link to="/teacher-list">Teacher page</Link>
         </Menu.Item>
       );
@@ -64,12 +76,12 @@ class Navbar extends React.Component {
         </Menu.Item>
       );
       register_learner = (
-        <Menu.Item key="register-learner">
+        <Menu.Item key="register_learner">
           <Link to="/register-learner">Register For Learner</Link>
         </Menu.Item>
       );
       register_teacher = (
-        <Menu.Item key="register-teacher">
+        <Menu.Item key="register_teacher">
           <Link to="/register-teacher">Register For Teacher</Link>
         </Menu.Item>
       );
@@ -82,6 +94,8 @@ class Navbar extends React.Component {
         {teacher_list}
         {learner}
         {teacher}
+        {contract_learner}
+        {contract_teacher}
         {logout}
         {login}
         {register_learner}

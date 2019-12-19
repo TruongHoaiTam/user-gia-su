@@ -132,3 +132,26 @@ export function callApiAddContractAdmin(contract) {
     });
 }
 
+export function callApiGetUser(_id) {
+    return axios({
+        method: 'GET',
+        url: `${api_user_url}/${_id}`,
+    });
+}
+
+export function callApiChangeStatusContractAdmin(item) {
+    return axios({
+        method: 'PUT',
+        url: `${api_admin_url}/contract/status/admin`,
+        data: item
+    })
+}
+
+export function callApiChangeStatusContractUser(item) {
+    return axios({
+        method: 'PUT',
+        url: `${api_user_url}/contract/status/user`,
+        data: item
+    })
+}
+

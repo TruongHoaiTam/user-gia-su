@@ -15,6 +15,9 @@ import Navbar from '../components/Navbar/index';
 import TeacherDetailPage from './TeacherDetailPage/index';
 import UpdateInfoRegisterPage from './UpdateInfoRegisterPage';
 import ContractPage from './Contract/index';
+import ContractLearnerPage from './ContractLearnerPage';
+import ContractTeacherPage from './ContractTeacherPage';
+import ContractDetailPage from './ContractDetailPage/index';
 
 const Root = () => (
   <Provider store={store}>
@@ -29,6 +32,9 @@ const Root = () => (
         <Route path="/teacher-list" component={TeacherListPage} />
         <Route path="/teacher" component={TeacherPage} />
         <Route path="/contract" component={ContractPage} />
+        <Route path="/contract-learner" component={ContractLearnerPage} />
+        <Route path="/contract-detail" component={ContractDetailPage} />
+        <Route path="/contract-teacher" component={ContractTeacherPage} />
         <Route
           path="/update-info-register"
           component={UpdateInfoRegisterPage}

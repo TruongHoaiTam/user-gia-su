@@ -14,12 +14,29 @@ import {
 class ContractPage extends React.Component {
   handleClick = (current_learner, current_teacher, content) => {
     const contract = {
-      current_learner: current_learner._id,
-      current_teacher: current_teacher._id,
+      id: new Date().getTime(),
+      current_learner: {
+        _id: current_learner._id,
+        fullname: current_learner.fullname,
+        phone: current_learner.phone,
+        birthday: current_learner.birthday,
+        address: current_learner.address,
+        email: current_learner.email,
+        avatar: current_learner.avatar
+      },
+      current_teacher: {
+        _id: current_teacher._id,
+        fullname: current_teacher.fullname,
+        phone: current_teacher.phone,
+        birthday: current_teacher.birthday,
+        address: current_teacher.address,
+        email: current_teacher.email,
+        avatar: current_teacher.avatar
+      },
       content
     };
-    callApiAddContractUser(contract).then(() => {
-      callApiAddContractAdmin(contract).then(() => {
+    callApiAddContractAdmin(contract).then(() => {
+      callApiAddContractUser(contract).then(() => {
         const { history } = this.props;
         history.push('/teacher-list');
       });
