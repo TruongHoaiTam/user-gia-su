@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { actSaveData } from '../actions/Manage';
 import { actSetCurrentContract } from '../actions/Detail';
 import '../index.css';
-import { Table, Button } from 'antd';
+import { Table, Button, Modal } from 'antd';
 import {
   callApiGetUser,
   callApiChangeStatusContractAdmin,
@@ -14,8 +14,36 @@ import {
 class ContractLearnerList extends React.Component {
   state = {
     filteredInfo: null,
-    sortedInfo: null
+    sortedInfo: null,
+
+    loading: false,
+    visible: false
   };
+
+  showModal = item => {
+    const { actSetCurrentContract } = this.props;
+    actSetCurrentContract(item);
+
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = item => {
+    item.pending_complaint = true;
+    this.handleChangeStatus(item);
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false, visible: false });
+    }, 3000);
+  };
+
+  handleCancel = item => {
+    this.handleChangeStatus(item);
+    this.setState({ visible: false });
+  };
+
+  handleOpenChatBox = () => {};
 
   handleChange = (pagination, filters, sorter) => {
     console.log('Various parameters', pagination, filters, sorter);
@@ -36,7 +64,9 @@ class ContractLearnerList extends React.Component {
     return callApiChangeStatusContractAdmin(item).then(result => {
       item.id = result.data.id;
       callApiChangeStatusContractUser(item).then(() => {
-        item.status = 'finished';
+        item.status =
+          item.pending_complaint === true ? 'pending complaint' : 'finished';
+        delete item.pending_complaint;
         const { actSetCurrentContract } = this.props;
         actSetCurrentContract(item);
         const { history } = this.props;
@@ -60,11 +90,14 @@ class ContractLearnerList extends React.Component {
                 <Button type="primary" onClick={() => this.handleDetail(item)}>
                   Xem chi tiết
                 </Button>
-                <Button
-                  type="danger"
-                  onClick={() => this.handleChangeStatus(item)}
-                >
+                <Button type="danger" onClick={() => this.showModal(item)}>
                   Kết thúc hợp đồng
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => this.handleOpenChatBox(item)}
+                >
+                  Chat
                 </Button>
               </div>
             ) : (
@@ -102,7 +135,8 @@ class ContractLearnerList extends React.Component {
         filters: [
           { text: 'finished', value: 'finished' },
           { text: 'still validate', value: 'still validate' },
-          { text: 'forced terminate', value: 'forced terminate' }
+          { text: 'forced terminate', value: 'forced terminate' },
+          { text: 'pending complaint', value: 'pending complaint' }
         ],
         filteredValue: filteredInfo.status || null,
         onFilter: (value, record) => record.status.includes(value),
@@ -115,8 +149,35 @@ class ContractLearnerList extends React.Component {
         ellipsis: true
       }
     ];
+    const { visible, loading } = this.state;
+    const { current_contract } = this.props;
+    console.log(current_contract);
     return (
       <div>
+        <Modal
+          visible={visible}
+          title="Title"
+          onOk={() => this.handleOk(current_contract)}
+          onCancel={() => this.handleCancel(current_contract)}
+          footer={[
+            <Button
+              key="back"
+              onClick={() => this.handleCancel(current_contract)}
+            >
+              Kết thúc hợp đồng
+            </Button>,
+            <Button
+              key="submit"
+              type="primary"
+              loading={loading}
+              onClick={() => this.handleOk(current_contract)}
+            >
+              Khiếu nại
+            </Button>
+          ]}
+        >
+          <p>Bạn có muốn khiếu nại hay không?</p>
+        </Modal>
         <Table
           columns={columns}
           dataSource={data}
@@ -131,7 +192,8 @@ class ContractLearnerList extends React.Component {
 const mapStateToProps = state => ({
   _id: state.auth._id,
   data: state.manage.data,
-  current_user: state.detail.current_user
+  current_user: state.detail.current_user,
+  current_contract: state.detail.current_contract
 });
 
 const mapDispatchToProps = dispatch => ({

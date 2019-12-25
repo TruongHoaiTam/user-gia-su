@@ -3,7 +3,8 @@ import 'antd/dist/antd.css';
 import './style.css';
 
 import { Card, Rate, Tag, Button } from 'antd';
-import MyComment from '../MyComment/index';
+import Comments from '../Comments';
+import Rates from '../Rates';
 import { connect } from 'react-redux';
 import { actSetCurrentTeacher } from '../../actions/Detail';
 
@@ -87,17 +88,20 @@ class TeacherDetail extends React.Component {
             </p>
             <div>
               <b className="mr-16">Đánh giá trung bình</b>
-              <Rate disabled defaultValue={4.5} className="rating" />
+              <Rate
+                disabled
+                defaultValue={current_teacher.rate}
+                className="rating"
+              />
             </div>
             <br />
             {submit}
           </div>
         </Card>
 
-        <Card className="card-group" title="Lịch sử làm việc">
-          <MyComment></MyComment>
-          <MyComment></MyComment>
-          <MyComment></MyComment>
+        <Card className="card-group" title="Đánh giá">
+          <Rates />
+          <Comments />
         </Card>
       </div>
     );

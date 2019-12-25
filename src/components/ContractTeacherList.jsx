@@ -54,13 +54,26 @@ class ContractTeacherList extends React.Component {
           key: item._id,
           learner: item.current_learner.fullname,
           status: item.status,
-          action: (
-            <div>
-              <Button type="primary" onClick={() => this.handleDetail(item)}>
-                Xem chi tiết
-              </Button>
-            </div>
-          )
+          action:
+            item.status === 'still validate' ? (
+              <div>
+                <Button type="primary" onClick={() => this.handleDetail(item)}>
+                  Xem chi tiết
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => this.handleOpenChatBox(item)}
+                >
+                  Chat
+                </Button>
+              </div>
+            ) : (
+              <div>
+                <Button type="primary" onClick={() => this.handleDetail(item)}>
+                  Xem chi tiết
+                </Button>
+              </div>
+            )
         });
       });
       const { actSaveData } = this.props;
@@ -89,7 +102,8 @@ class ContractTeacherList extends React.Component {
         filters: [
           { text: 'finished', value: 'finished' },
           { text: 'still validate', value: 'still validate' },
-          { text: 'forced terminate', value: 'forced terminate' }
+          { text: 'forced terminate', value: 'forced terminate' },
+          { text: 'pending complaint', value: 'pending complaint' }
         ],
         filteredValue: filteredInfo.status || null,
         onFilter: (value, record) => record.status.includes(value),

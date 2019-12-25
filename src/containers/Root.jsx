@@ -18,6 +18,8 @@ import ContractPage from './Contract/index';
 import ContractLearnerPage from './ContractLearnerPage';
 import ContractTeacherPage from './ContractTeacherPage';
 import ContractDetailPage from './ContractDetailPage/index';
+import RevenuePage from './RevenuePage';
+import ChangePasswordPage from './ChangePasswordPage';
 
 const Root = () => (
   <Provider store={store}>
@@ -27,6 +29,7 @@ const Root = () => (
         <Route path="/login" component={LoginPage} />
         <Route path="/register-learner" component={RegisterLearnerPage} />
         <Route path="/register-teacher" component={RegisterTeacherPage} />
+        <Route path="/change-password" component={ChangePasswordPage} />
         <Route path="/learner" component={LearnerPage} />
         <Route path="/teacher-detail" component={TeacherDetailPage} />
         <Route path="/teacher-list" component={TeacherListPage} />
@@ -35,6 +38,7 @@ const Root = () => (
         <Route path="/contract-learner" component={ContractLearnerPage} />
         <Route path="/contract-detail" component={ContractDetailPage} />
         <Route path="/contract-teacher" component={ContractTeacherPage} />
+        <Route path="/revenue" component={RevenuePage} />
         <Route
           path="/update-info-register"
           component={UpdateInfoRegisterPage}

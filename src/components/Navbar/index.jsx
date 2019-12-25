@@ -23,7 +23,8 @@ class Navbar extends React.Component {
       teacher_list,
       update_info_register,
       contract_learner,
-      contract_teacher;
+      contract_teacher,
+      revenue;
     if (username && username !== undefined && status === 'active') {
       logout = (
         <Menu.Item key="logout">
@@ -63,6 +64,11 @@ class Navbar extends React.Component {
             <Link to="/contract-teacher">Contract teacher</Link>
           </Menu.Item>
         );
+        revenue = (
+          <Menu.Item key="revenue">
+            <Link to="/revenue">Revenue</Link>
+          </Menu.Item>
+        );
       }
     } else {
       teacher_list = (
@@ -96,6 +102,7 @@ class Navbar extends React.Component {
         {teacher}
         {contract_learner}
         {contract_teacher}
+        {revenue}
         {logout}
         {login}
         {register_learner}

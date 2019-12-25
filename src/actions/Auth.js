@@ -17,6 +17,7 @@ export const actLoginRequest = user => {
     return dispatch => {
         return callApiLogin(user)
             .then(res => {
+                console.log(res.data)
                 if (res.data.user.status === 'active') {
                     localStorage.setItem('_id', res.data.user._id);
                     localStorage.setItem('username', res.data.user.username);

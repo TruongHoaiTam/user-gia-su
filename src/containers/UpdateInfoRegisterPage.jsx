@@ -1,8 +1,9 @@
 import React from 'react';
 import UpdateInfoRegisterForm from '../components/UpdateInfoRegisterForm';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
+import '../index.css';
 
 class UpdateInfoRegisterPage extends React.Component {
   history = () => {
@@ -22,6 +23,9 @@ class UpdateInfoRegisterPage extends React.Component {
         <div>
           <p className="title">UPDATE INFOMATION REGISTER</p>
           <UpdateInfoRegisterForm history={this.history} />
+          <Link to="/change-password" className="change-password">
+            Change password
+          </Link>
         </div>
       );
     } else {

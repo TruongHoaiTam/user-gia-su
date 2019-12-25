@@ -73,8 +73,21 @@ export function callApiUpdateInfoRegister(body) {
     });
 }
 
+export function callApiChangePassword(body) {
+    return axios({
+        method: 'PUT',
+        url: `${api_user_url}/user/change-password`,
+        data: {
+            old_password: body.old_password,
+            new_password: body.new_password,
+            _id: body._id
+        }
+    });
+}
+
 
 export function callApiIntroduction(body) {
+    console.log(body.token)
     return axios({
         method: 'POST',
         url: `${api_user_url}/user/introduction`,
@@ -152,6 +165,35 @@ export function callApiChangeStatusContractUser(item) {
         method: 'PUT',
         url: `${api_user_url}/contract/status/user`,
         data: item
+    })
+}
+
+export function callApiAddComment(item) {
+    return axios({
+        method: 'PUT',
+        url: `${api_user_url}/comment`,
+        data: {
+            id_teacher: item._id,
+            comment: item.comment
+        }
+    })
+}
+
+export function callApiAddRate(item) {
+    return axios({
+        method: 'PUT',
+        url: `${api_user_url}/rate`,
+        data: {
+            id_teacher: item._id,
+            rate: item.rate
+        }
+    })
+}
+
+export function callApiCountLearnerAndRevenue(_id) {
+    return axios({
+        method: 'GET',
+        url: `${api_user_url}/revenue/${_id}`
     })
 }
 
