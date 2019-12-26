@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { Tag, Icon, Dropdown, Button, Menu } from 'antd';
 import { connect } from 'react-redux';
 import { TweenOneGroup } from 'rc-tween-one';

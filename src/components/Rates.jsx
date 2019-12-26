@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { Form, Button, Rate } from 'antd';
 import { callApiAddRate } from '../utils/apiCaller';
 import { connect } from 'react-redux';

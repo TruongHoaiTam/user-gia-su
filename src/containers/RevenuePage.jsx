@@ -1,14 +1,12 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import '../index.css';
-import { Statistic, Row, Col, Icon, Card } from 'antd';
-import { callApiCountLearnerAndRevenue } from '../utils/apiCaller';
-import { connect } from 'react-redux';
+import React from "react";
+import { Statistic, Row, Col, Icon, Card } from "antd";
+import { callApiCountLearnerAndRevenue } from "../utils/apiCaller";
+import { connect } from "react-redux";
 
 class RevenuePage extends React.Component {
   state = {
     count: 0,
-    revenue: 0 + 'VND'
+    revenue: 0 + "VND"
   };
 
   componentWillMount() {

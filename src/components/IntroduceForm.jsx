@@ -10,7 +10,6 @@ import {
 import NumericInputDemo from '../components/NumericInputDemo';
 import EditableTagGroup from '../components/EditableTagGroup';
 import { callApiIntroduction } from '../utils/apiCaller';
-import '../index.css';
 const { TextArea } = Input;
 
 class NormalIntroduceForm extends React.Component {

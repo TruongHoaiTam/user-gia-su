@@ -1,15 +1,13 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import './style.css';
+import React from "react";
 
-import { Card, Tag, Button } from 'antd';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { actSetCurrentTeacher } from '../../actions/Detail';
+import { Card, Tag, Button } from "antd";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { actSetCurrentTeacher } from "../../actions/Detail";
 import {
   callApiAddContractUser,
   callApiAddContractAdmin
-} from '../../utils/apiCaller';
+} from "../../utils/apiCaller";
 
 class ContractPage extends React.Component {
   handleClick = (current_learner, current_teacher, content) => {
@@ -38,7 +36,7 @@ class ContractPage extends React.Component {
     callApiAddContractAdmin(contract).then(() => {
       callApiAddContractUser(contract).then(() => {
         const { history } = this.props;
-        history.push('/teacher-list');
+        history.push("/teacher-list");
       });
     });
   };
@@ -75,8 +73,8 @@ class ContractPage extends React.Component {
     if (
       username &&
       username !== undefined &&
-      status === 'active' &&
-      strategy === 'learner'
+      status === "active" &&
+      strategy === "learner"
     ) {
       return (
         <div className="center">
@@ -153,7 +151,7 @@ class ContractPage extends React.Component {
               </div>
               <div className="flex">
                 <p>
-                  <b>Tổng học phí: </b> {current_teacher.price_per_hour * 50}{' '}
+                  <b>Tổng học phí: </b> {current_teacher.price_per_hour * 50}{" "}
                   VND
                 </p>
               </div>

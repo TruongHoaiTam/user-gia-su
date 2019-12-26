@@ -1,12 +1,10 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import './style.css';
+import React from "react";
 
-import { Card, Rate, Tag, Button } from 'antd';
-import Comments from '../Comments';
-import Rates from '../Rates';
-import { connect } from 'react-redux';
-import { actSetCurrentTeacher } from '../../actions/Detail';
+import { Card, Rate, Tag, Button } from "antd";
+import Comments from "../Comments";
+import Rates from "../Rates";
+import { connect } from "react-redux";
+import { actSetCurrentTeacher } from "../../actions/Detail";
 
 class TeacherDetail extends React.Component {
   handleClick = () => {
@@ -21,8 +19,8 @@ class TeacherDetail extends React.Component {
     if (
       username &&
       username !== undefined &&
-      status === 'active' &&
-      strategy === 'learner'
+      status === "active" &&
+      strategy === "learner"
     ) {
       submit = (
         <Button type="primary" onClick={() => this.handleClick()}>

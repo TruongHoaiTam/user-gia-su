@@ -1,12 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Form, Icon, Input, Button, Checkbox, Modal } from 'antd';
-import { Redirect, Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { Form, Icon, Input, Button, Checkbox, Modal } from "antd";
+import { Redirect, Link } from "react-router-dom";
 
-import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
-
-import 'antd/dist/antd.css';
-import '../index.css';
+import { actLoginRequest, actGetUser, actLogout } from "../actions/Auth";
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -28,21 +25,21 @@ class NormalLoginForm extends React.Component {
     const { username, status, strategy, err } = this.props;
     const { getFieldDecorator } = this.props.form;
 
-    if (username && username !== undefined && status === 'active') {
-      if (strategy === 'learner') return <Redirect to="/learner" />;
+    if (username && username !== undefined && status === "active") {
+      if (strategy === "learner") return <Redirect to="/learner" />;
       return <Redirect to="/teacher" />;
     }
-    if (err === 'BLOCK') {
+    if (err === "BLOCK") {
       const { info } = Modal;
       info({
-        title: 'Thông báo',
+        title: "Thông báo",
         content: `Tài khoản của bạn đã bị khóa`
       });
     }
     if (err === 400) {
       const { info } = Modal;
       info({
-        title: 'Thông báo',
+        title: "Thông báo",
         content: `Đăng nhập thất bại`
       });
     }
@@ -51,28 +48,24 @@ class NormalLoginForm extends React.Component {
       <div>
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
-            {getFieldDecorator('username', {
-              rules: [
-                { required: true, message: 'Please input your username!' }
-              ]
+            {getFieldDecorator("username", {
+              rules: [{ required: true, message: "Mời bạn nhập username!" }]
             })(
               <Input
                 prefix={
-                  <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                 }
                 placeholder="Username"
               />
             )}
           </Form.Item>
           <Form.Item>
-            {getFieldDecorator('password', {
-              rules: [
-                { required: true, message: 'Please input your Password!' }
-              ]
+            {getFieldDecorator("password", {
+              rules: [{ required: true, message: "Mời bạn nhập mật khẩu!" }]
             })(
               <Input
                 prefix={
-                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
                 }
                 type="password"
                 placeholder="Password"
@@ -80,12 +73,12 @@ class NormalLoginForm extends React.Component {
             )}
           </Form.Item>
           <Form.Item>
-            {getFieldDecorator('remember', {
-              valuePropName: 'checked',
+            {getFieldDecorator("remember", {
+              valuePropName: "checked",
               initialValue: true
             })(<Checkbox>Remember me</Checkbox>)}
             <Link to="/forgot-password" className="login-form-forgot">
-              Forgot password
+              Quên mật khẩu
             </Link>
             <Button
               type="primary"
@@ -94,9 +87,9 @@ class NormalLoginForm extends React.Component {
             >
               Log in
             </Button>
-            <Link to="/register-learner">Register for learner!</Link>
+            <Link to="/register-learner">Đăng kí học!</Link>
             <br />
-            <Link to="/register-teacher">Register for teacher!</Link>
+            <Link to="/register-teacher">Đăng kí dạy!</Link>
           </Form.Item>
         </Form>
       </div>
@@ -128,6 +121,6 @@ const mapDispatchToProps = dispatch => ({
   actLogout: () => dispatch(actLogout())
 });
 
-const LoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
+const LoginForm = Form.create({ name: "normal_login" })(NormalLoginForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

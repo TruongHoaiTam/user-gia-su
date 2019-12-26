@@ -1,15 +1,13 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import './style.css';
+import React from "react";
 
-import { Card, Tag, Button, Select } from 'antd';
+import { Card, Tag, Button, Select } from "antd";
 import {
   callApiGetAllTeacher,
   callApiGetFilterTeacher,
   callApiGetAllTag
-} from '../../utils/apiCaller';
-import { connect } from 'react-redux';
-import { actSetCurrentTeacher } from '../../actions/Detail';
+} from "../../utils/apiCaller";
+import { connect } from "react-redux";
+import { actSetCurrentTeacher } from "../../actions/Detail";
 const { Option } = Select;
 
 class Teachers extends React.Component {

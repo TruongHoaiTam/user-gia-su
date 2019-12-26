@@ -1,11 +1,9 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import { Redirect } from 'react-router-dom';
-import './style.css';
+import React from "react";
+import { Redirect } from "react-router-dom";
 
-import { Card, Tag } from 'antd';
-import { connect } from 'react-redux';
-import { actSetCurrentContract } from '../../actions/Detail';
+import { Card, Tag } from "antd";
+import { connect } from "react-redux";
+import { actSetCurrentContract } from "../../actions/Detail";
 
 class ContractDetail extends React.Component {
   render() {
@@ -14,8 +12,8 @@ class ContractDetail extends React.Component {
     if (
       username &&
       username !== undefined &&
-      (strategy === 'teacher' || strategy === 'learner') &&
-      status === 'active'
+      (strategy === "teacher" || strategy === "learner") &&
+      status === "active"
     ) {
       return (
         <div>

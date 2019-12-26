@@ -12,8 +12,6 @@ import {
   actLoginGoogleRequest
 } from '../actions/Auth';
 
-import 'antd/dist/antd.css';
-import '../index.css';
 
 class LoginFacebookGoogle extends React.Component {
   facebookResponse = e => {

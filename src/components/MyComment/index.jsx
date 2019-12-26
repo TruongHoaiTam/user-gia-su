@@ -1,7 +1,6 @@
-import React from 'react';
-import { Comment, Icon, Tooltip, Rate } from 'antd';
-import moment from 'moment';
-import './style.css';
+import React from "react";
+import { Comment, Icon, Tooltip, Rate } from "antd";
+import moment from "moment";
 
 class MyComment extends React.Component {
   state = {
@@ -14,7 +13,7 @@ class MyComment extends React.Component {
     this.setState({
       likes: 1,
       dislikes: 0,
-      action: 'liked'
+      action: "liked"
     });
   };
 
@@ -22,7 +21,7 @@ class MyComment extends React.Component {
     this.setState({
       likes: 0,
       dislikes: 1,
-      action: 'disliked'
+      action: "disliked"
     });
   };
 
@@ -34,21 +33,21 @@ class MyComment extends React.Component {
         <Tooltip title="Like">
           <Icon
             type="like"
-            theme={action === 'liked' ? 'filled' : 'outlined'}
+            theme={action === "liked" ? "filled" : "outlined"}
             onClick={this.like}
           />
         </Tooltip>
-        <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
+        <span style={{ paddingLeft: 8, cursor: "auto" }}>{likes}</span>
       </span>,
       <span key=' key="comment-basic-dislike"'>
         <Tooltip title="Dislike">
           <Icon
             type="dislike"
-            theme={action === 'disliked' ? 'filled' : 'outlined'}
+            theme={action === "disliked" ? "filled" : "outlined"}
             onClick={this.dislike}
           />
         </Tooltip>
-        <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
+        <span style={{ paddingLeft: 8, cursor: "auto" }}>{dislikes}</span>
       </span>,
       <span key="comment-basic-reply-to">Reply to</span>
     ];
@@ -68,7 +67,7 @@ class MyComment extends React.Component {
           </div>
         }
         datetime={
-          <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+          <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
             <span>{moment().fromNow()}</span>
           </Tooltip>
         }
