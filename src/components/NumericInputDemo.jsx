@@ -1,6 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
-import '../index.css';
 import { Input } from 'antd';
 
 class NumericInput extends React.Component {

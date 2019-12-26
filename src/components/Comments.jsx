@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { Comment, Avatar, Form, Button, List, Input } from 'antd';
 import { callApiAddComment } from '../utils/apiCaller';
 import { connect } from 'react-redux';

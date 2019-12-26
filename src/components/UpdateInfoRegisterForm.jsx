@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { Form, Input, Select, Button, Modal, DatePicker } from 'antd';

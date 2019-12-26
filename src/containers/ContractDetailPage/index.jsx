@@ -1,6 +1,5 @@
-import React from 'react';
-import ContractDetail from '../../components/ContractDetail';
-import './style.css';
+import React from "react";
+import ContractDetail from "../../components/ContractDetail";
 
 function ContractDetailPage() {
   return (

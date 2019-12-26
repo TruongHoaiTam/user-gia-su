@@ -1,11 +1,10 @@
-import React from 'react';
-import Teachers from '../../components/Teachers';
-import './style.css';
+import React from "react";
+import Teachers from "../../components/Teachers";
 
 class TeacherListPage extends React.Component {
   history = () => {
     const { history } = this.props;
-    history.push('/teacher-detail');
+    history.push("/teacher-detail");
   };
 
   render() {

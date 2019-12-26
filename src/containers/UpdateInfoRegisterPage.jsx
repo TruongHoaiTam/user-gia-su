@@ -1,9 +1,8 @@
-import React from 'react';
-import UpdateInfoRegisterForm from '../components/UpdateInfoRegisterForm';
-import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
-import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
-import '../index.css';
+import React from "react";
+import UpdateInfoRegisterForm from "../components/UpdateInfoRegisterForm";
+import { connect } from "react-redux";
+import { Redirect, Link } from "react-router-dom";
+import { actLoginRequest, actGetUser, actLogout } from "../actions/Auth";
 
 class UpdateInfoRegisterPage extends React.Component {
   history = () => {
@@ -18,7 +17,7 @@ class UpdateInfoRegisterPage extends React.Component {
 
   render() {
     const { username, status } = this.props;
-    if (username && username !== undefined && status === 'active') {
+    if (username && username !== undefined && status === "active") {
       return (
         <div>
           <p className="title">UPDATE INFOMATION REGISTER</p>

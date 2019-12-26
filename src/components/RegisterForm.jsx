@@ -1,5 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { Form, Input, Select, Button, Modal, DatePicker } from 'antd';
 import Avatar from './Avatar';
 import { callApiRegister } from '../utils/apiCaller';

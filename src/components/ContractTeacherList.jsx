@@ -1,9 +1,7 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
 import { actSaveData } from '../actions/Manage';
 import { actSetCurrentContract } from '../actions/Detail';
-import '../index.css';
 import { Table, Button } from 'antd';
 import {
   callApiGetUser,

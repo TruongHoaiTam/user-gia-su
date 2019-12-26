@@ -1,13 +1,12 @@
-import React from 'react';
-import IntroduceForm from '../components/IntroduceForm';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
-import 'antd/dist/antd.css';
+import React from "react";
+import IntroduceForm from "../components/IntroduceForm";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { actLoginRequest, actGetUser, actLogout } from "../actions/Auth";
 
 class TeacherPage extends React.Component {
   handleMenuClick = e => {
-    console.log('click', e);
+    console.log("click", e);
   };
 
   history = () => {
@@ -25,8 +24,8 @@ class TeacherPage extends React.Component {
     if (
       username &&
       username !== undefined &&
-      status === 'active' &&
-      strategy === 'teacher'
+      status === "active" &&
+      strategy === "teacher"
     ) {
       return (
         <div>

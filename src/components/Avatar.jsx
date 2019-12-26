@@ -1,6 +1,4 @@
 import React from 'react';
-import 'antd/dist/antd.css';
-import '../index.css';
 import { Upload, Icon, message } from 'antd';
 
 function getBase64(img, callback) {

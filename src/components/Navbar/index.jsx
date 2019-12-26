@@ -1,11 +1,9 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import { connect } from 'react-redux';
-import { Menu } from 'antd';
-import { Link } from 'react-router-dom';
-import { actLoginRequest, actGetUser, actLogout } from '../../actions/Auth';
-import { Button } from 'antd';
-import './style.css';
+import React from "react";
+import { connect } from "react-redux";
+import { Menu } from "antd";
+import { Link } from "react-router-dom";
+import { actLoginRequest, actGetUser, actLogout } from "../../actions/Auth";
+import { Button } from "antd";
 
 class Navbar extends React.Component {
   componentDidUpdate() {
@@ -25,7 +23,7 @@ class Navbar extends React.Component {
       contract_learner,
       contract_teacher,
       revenue;
-    if (username && username !== undefined && status === 'active') {
+    if (username && username !== undefined && status === "active") {
       logout = (
         <Menu.Item key="logout">
           <Button onClick={actLogout}>Logout</Button>
@@ -37,7 +35,7 @@ class Navbar extends React.Component {
         </Menu.Item>
       );
 
-      if (strategy === 'learner') {
+      if (strategy === "learner") {
         learner = (
           <Menu.Item key="learner">
             <Link to="/learner">Learner</Link>
@@ -53,7 +51,7 @@ class Navbar extends React.Component {
             <Link to="/contract-learner">Contract learner</Link>
           </Menu.Item>
         );
-      } else if (strategy === 'teacher') {
+      } else if (strategy === "teacher") {
         teacher = (
           <Menu.Item key="teacher">
             <Link to="/teacher">Teacher</Link>

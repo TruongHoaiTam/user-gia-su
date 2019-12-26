@@ -1,9 +1,8 @@
-import React from 'react';
-import ContractLearnerList from '../components/ContractLearnerList';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
-import '../index.css';
+import React from "react";
+import ContractLearnerList from "../components/ContractLearnerList";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { actLoginRequest, actGetUser, actLogout } from "../actions/Auth";
 
 class ContractLearnerPage extends React.Component {
   componentDidUpdate() {
@@ -13,11 +12,11 @@ class ContractLearnerPage extends React.Component {
 
   history = type => {
     const { history } = this.props;
-    if (type === '/contract-detail') {
-      history.push('/contract-detail');
+    if (type === "/contract-detail") {
+      history.push("/contract-detail");
     } else {
-      history.push('/contract-detail');
-      history.push('/contract-learner');
+      history.push("/contract-detail");
+      history.push("/contract-learner");
     }
   };
 
