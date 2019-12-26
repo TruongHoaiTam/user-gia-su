@@ -12,7 +12,6 @@ class RevenuePage extends React.Component {
   componentWillMount() {
     const { _id } = this.props;
     callApiCountLearnerAndRevenue(_id).then(result => {
-      console.log(result.data);
       this.setState({
         count: result.data.count,
         revenue: result.data.revenue

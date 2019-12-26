@@ -149,7 +149,6 @@ class ContractLearnerList extends React.Component {
     ];
     const { visible, loading } = this.state;
     const { current_contract } = this.props;
-    console.log(current_contract);
     return (
       <div>
         <Modal

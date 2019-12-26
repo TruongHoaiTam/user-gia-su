@@ -2,16 +2,14 @@ import React from 'react';
 import { Form, Input, Button, Modal } from 'antd';
 import { actLoginRequest, actGetUser, actLogout } from '../actions/Auth';
 import { connect } from 'react-redux';
-import { callApiChangePassword } from '../utils/apiCaller';
+import { callApiForgotPassword } from '../utils/apiCaller';
 
 class ChangePasswordForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        const { _id } = this.props;
-        values._id = _id;
-        return callApiChangePassword(values)
+        return callApiForgotPassword(values)
           .then(() => {
             const { actLogout } = this.props;
             actLogout();
@@ -53,48 +51,53 @@ class ChangePasswordForm extends React.Component {
         }
       }
     };
-    const { username, status } = this.props;
-    if (username && username !== undefined && status === 'active') {
-      return (
-        <div>
-          <p className="title">CHANGE PASSWORD</p>
-          <Form
-            {...formItemLayout}
-            onSubmit={this.handleSubmit}
-            className="register-form"
-          >
-            <Form.Item label="Old password" hasFeedback>
-              {getFieldDecorator('old_password', {
-                rules: [
-                  {
-                    required: true,
-                    message: 'Please input your old password!'
-                  }
-                ]
-              })(<Input.Password />)}
-            </Form.Item>
-            <Form.Item label="New password" hasFeedback>
-              {getFieldDecorator('new_password', {
-                rules: [
-                  {
-                    required: true,
-                    message: 'Please input your new password!'
-                  }
-                ]
-              })(<Input.Password />)}
-            </Form.Item>
+    return (
+      <div>
+        <p className="title">FORGOT PASSWORD</p>
+        <Form
+          {...formItemLayout}
+          onSubmit={this.handleSubmit}
+          className="register-form"
+        >
+          <Form.Item label="Username" hasFeedback>
+            {getFieldDecorator('username', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your username!'
+                }
+              ]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="Fullname" hasFeedback>
+            {getFieldDecorator('fullname', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your fullname!'
+                }
+              ]
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="New password" hasFeedback>
+            {getFieldDecorator('new_password', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your new password!'
+                }
+              ]
+            })(<Input.Password />)}
+          </Form.Item>
 
-            <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
-                Change password
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
-      );
-    } else {
-      return null;
-    }
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">
+              Change password
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    );
   }
 }
 

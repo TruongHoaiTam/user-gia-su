@@ -1,5 +1,4 @@
-import React from "react";
-import { Button } from "antd";
+import React from 'react';
 
 function HomePage() {
   return (
@@ -11,10 +10,6 @@ function HomePage() {
             kết nối người dạy và người học
           </span>
         </h3>
-        <div className="heading-btn">
-          <Button type="secondary">Tìm thầy</Button>
-          <Button type="secondary">Tìm trò</Button>
-        </div>
       </div>
     </div>
   );

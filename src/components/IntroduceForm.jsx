@@ -20,7 +20,6 @@ class NormalIntroduceForm extends React.Component {
         values.price_per_hour = localStorage.getItem('price_per_hour');
         values.tags = localStorage.getItem('tags_display');
         values.token = localStorage.getItem('token');
-        console.log(values);
         return callApiIntroduction(values)
           .then(() => {
             const { history } = this.props;

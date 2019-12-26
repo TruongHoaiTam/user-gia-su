@@ -85,9 +85,20 @@ export function callApiChangePassword(body) {
     });
 }
 
+export function callApiForgotPassword(body) {
+    return axios({
+        method: 'PUT',
+        url: `${api_user_url}/user/forgot-password`,
+        data: {
+            username: body.username,
+            fullname: body.fullname,
+            new_password: body.new_password
+        }
+    });
+}
+
 
 export function callApiIntroduction(body) {
-    console.log(body.token)
     return axios({
         method: 'POST',
         url: `${api_user_url}/user/introduction`,

@@ -62,7 +62,6 @@ class EditableTagGroup extends React.Component {
 
   componentWillMount() {
     callApiGetAllTag().then(result => {
-      console.log(result);
       let data = [];
       result.data.forEach(item => {
         data.push({
