@@ -169,6 +169,7 @@ body {
     #4ecdc4
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: "Montserrat", sans-serif;
+  height: 100%;
 }
 .navbar a {
   color: white !important;
@@ -372,4 +373,81 @@ body {
 /* System margin */
 .mr-16 {
   margin-right: 16px;
+}
+
+/* Footer */
+.footer-box {
+  padding: 0;
+  margin: 0;
+}
+.footer {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  background: #4ecdc4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #556270,
+    #4ecdc4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #556270,
+    #4ecdc4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+/* Layout */
+.header {
+  padding: 0;
+}
+
+/* Homepage */
+.heading-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+}
+
+.heading-primary__main {
+  display: block;
+  font-size: 62px;
+  font-weight: 400;
+  letter-spacing: 15px;
+}
+
+.heading-primary__sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.heading-btn {
+  display: flex;
+  justify-content: space-around;
+}
+.home {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(199, 199, 199, 0.8),
+      rgba(0, 73, 28, 0.795)
+    ),
+    url("./img/background.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  height: 95vh;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
 }
